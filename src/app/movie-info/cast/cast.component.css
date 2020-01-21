@@ -1,0 +1,19 @@
+.cast {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}
+
+.castContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollButton {
+  margin: 5px;
+}
+

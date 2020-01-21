@@ -1,0 +1,13 @@
+.spinner {
+  width:80px;
+  height:80px;
+  border: 10px solid #673ab7;
+  border-top: 10px solid rgb(46, 46, 46);
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}

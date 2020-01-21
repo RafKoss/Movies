@@ -1,0 +1,61 @@
+<div class="container mainContainer">
+  <div class="imageModal" #imageModal>
+    <mat-icon class="modalCloseIcon" (click)="closeImageModal()">clear</mat-icon>
+    <img [src]=this.movie.Poster class="bigPoster">
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+        <img [src]=this.movie.Poster alt="" class="img-responsive poster" (click)="openImageModal()">
+    </div>
+    <div class="col-sm-8">
+      <h1>{{this.movie.Title}}</h1>
+      <div class="row">
+        <div class="col-sm-6">
+          <p>Rok: <span class="colorText">{{movie.Year}}</span></p>
+        </div>
+        <div class="col-sm-6">
+          <p>Kraj: <span class="colorText">{{movie.Country}}</span></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <p>Czas: <span class="colorText">{{movie.Runtime}}</span></p>
+        </div>
+        <div class="col-sm-6">
+          <p>Gatunek: <span class="colorText">{{movie.Genre}}</span></p>
+        </div>
+      </div>
+      <h2>Reżyser</h2>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="person">
+            <img src="assets/person.png" class="personImage" alt="">
+            {{movie.Director}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Obsada</h2>
+      <app-cast [actors]='movie.Actors.split(",")'></app-cast>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Oceny</h2>
+      <div *ngFor="let rating of movie.Ratings" class="row">
+        <div class="col-sm-12 rating">
+          <h5 class="ratingText">{{rating.Source}}</h5>
+          <div *ngIf="rating.Source === 'Internet Movie Database'" class="starRating">
+            <mat-icon *ngFor="let star of this.stars" class="star">{{star}}</mat-icon>
+          </div>
+          <app-rating-bar *ngIf="rating.Source !== 'Internet Movie Database'" [rating] = "rating"></app-rating-bar>
+          <h4>{{rating.Value}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

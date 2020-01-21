@@ -1,0 +1,16 @@
+.poster {
+  width: 150px;
+}
+
+.resultCard {
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #b3b7b0;
+  background-color:  rgb(59, 59, 59);
+  box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.452);
+}
+
+.colorText {
+  color: #9127be;
+}

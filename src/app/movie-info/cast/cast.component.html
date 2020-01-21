@@ -1,0 +1,24 @@
+<div class="castContainer">
+  <button (click)="scrollLeft()"
+    mat-button
+    mat-icon-button
+    class="scrollButton"
+    type="button"
+    (click)="scrollLeft()">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+  <div class="cast" #cast>
+    <div *ngFor="let actor of actors" class="person">
+      <img src="assets/person.png" class="personImage" alt="">
+      {{actor}}
+    </div>
+  </div>
+  <button (click)="scrollRight()"
+    mat-button
+    mat-icon-button
+    class="scrollButton"
+    type="button"
+    (click)="scrollRight()">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 banner">
+      FilmNet
+    </div>
+  </div>
+  <form (ngSubmit)="onSearch(f)" #f="ngForm">
+    <div class="row searchBar">
+      <div class="col-xs-10">
+          <mat-form-field>
+            <input
+              matInput
+              name="title"
+              class="textColor"
+              placeholder="Tytuł filmu"
+              ngModel>
+            <button
+              mat-button
+              matSuffix
+              mat-icon-button
+              type="submit">
+              <mat-icon class="textColor">search</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-2 centerText">
+          Filtry
+          <button
+            mat-button
+            mat-icon-button
+            type="button"
+            class="button"
+            (click)="onFilterClick()">
+            <mat-icon class="textColor">keyboard_arrow_down</mat-icon>
+          </button>
+      </div>
+    </div>
+
+    <div class="row filterBar" #filterBar>
+      <div class="col-sm-5">
+        <mat-form-field>
+          <mat-label>Rok</mat-label>
+          <mat-select
+            name="year"
+            ngModel>
+            <mat-option *ngFor="let year of this.years" [value]="year">{{year}}</mat-option>
+          </mat-select
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-4">
+        <mat-form-field>
+          <mat-label>Typ</mat-label>
+          <mat-select
+            name="type"
+            ngModel>
+            <mat-option value="movie">Film</mat-option>
+            <mat-option value="series">Serial</mat-option>
+            <mat-option value="episode">Odcinek</mat-option>
+          </mat-select
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-3 centerText">
+        <button
+          mat-button
+          class="textColor"
+          type="submit">
+          Szukaj
+        </button>
+        <button
+          mat-button
+          class="textColor"
+          type="reset">
+          Reset
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="this.errorMessage" class="container centerText">
+  <div class="row">
+    <div class="col-sm-12">
+      Nie znaleziono filmu
+    </div>
+  </div>
+</div>
+
+<div *ngIf="this.isLoading" class="container centerText">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+  </div>
+</div>
+
+<div
+  (scroll)="onScroll()">
+  <app-result
+    *ngFor="let result of results"
+    [movie] = "result">
+  </app-result>
+</div>
